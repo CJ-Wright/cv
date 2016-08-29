@@ -8,3 +8,4 @@ Source/
 *.blg
 *.xml
 *.out
+!wright_cv.pdf
