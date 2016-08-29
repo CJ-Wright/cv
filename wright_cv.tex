@@ -1,0 +1,440 @@
+% (c) 2002 Matthew Boedicker <mboedick@mboedick.org> (original author) 
+%     http://mboedick.org
+% (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
+% (c) 2008 Nathaniel Johnston <nathaniel@nathanieljohnston.com> 
+%     http://www.nathanieljohnston.com
+%
+% This work is licensed under the Creative Commons Attribution-Noncommercial-Share 
+% Alike 2.5 License. To view a copy of this license, visit 
+% http://creativecommons.org/licenses/by-nc-sa/2.5/ or send a letter to Creative 
+% Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
+
+\documentclass[letterpaper,11pt]{article}
+\newlength{\outerbordwidth}
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+\usepackage[svgnames]{xcolor}
+\usepackage{framed}
+\usepackage{tocloft}
+\usepackage[backend=bibtex]{biblatex}
+\usepackage{hyperref}
+\usepackage[version=3]{mhchem}
+
+%-----------------------------------------------------------
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=red            % color of external links
+}
+
+%-----------------------------------------------------------
+%Edit these values as you see fit
+
+% Width of border outside of title bars
+\setlength{\outerbordwidth}{3pt}  
+% Outer background color of title bars (0 = black, 1 = white)
+\definecolor{shadecolor}{gray}{0.75}  
+% Inner background color of title bars
+\definecolor{shadecolorB}{gray}{0.93}  
+
+
+%-----------------------------------------------------------
+%Margin setup
+
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\paperheight}{11in}
+\setlength{\paperwidth}{8.5in}
+\setlength{\tabcolsep}{0in}
+\setlength{\textheight}{9.5in}
+\setlength{\textwidth}{7in}
+\setlength{\topmargin}{-0.3in}
+\setlength{\topskip}{0in}
+\setlength{\voffset}{0.1in}
+
+
+%-----------------------------------------------------------
+%Custom commands
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+\newcommand{\resheading}[1]{\vspace{8pt}
+  \parbox{\textwidth}{\setlength{\fboxsep}{\outerbordwidth}
+    \begin{shaded}
+    \setlength{\fboxsep}{0pt}\framebox[\textwidth][l]{\setlength{\fboxsep}{4pt}\fcolorbox{shadecolorB}{shadecolorB}{\textbf{\sffamily{\mbox{~}\makebox[6.762in][l]{\large #1} \vphantom{p\^{E}}}}}}
+    \end{shaded}
+  }\vspace{-5pt}
+}
+
+\newcommand{\ressubheadingshort}[3]{
+    \begin{center}
+    \begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+        \multicolumn{2}{c}{\textbf{#1} \cftdotfill{\cftdotsep} #2} \\
+        \textit{#3} & \\
+        \vphantom{E}
+    \end{tabular*}
+    \end{center}
+    \vspace{-24pt}
+}
+
+\newcommand{\ressubheading}[4]{
+    \begin{center}
+    \begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+        \multicolumn{2}{c}{\textbf{#1} \cftdotfill{\cftdotsep} #2} \\
+        \multicolumn{2}{c}{\textit{#3} \cftdotfill{\cftdotsep} \textit{#4}} \\
+        \vphantom{E}
+    \end{tabular*}
+    \end{center}
+    \vspace{-24pt}
+}
+
+\newcommand{\ressubheadingitems}[5]{
+    \begin{center}
+    \begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+        \multicolumn{2}{c}{\textbf{#1} \cftdotfill{\cftdotsep} #2} \\
+        \multicolumn{2}{c}{\textit{#3} \cftdotfill{\cftdotsep} \textit{#4}} \\
+        \vphantom{E}
+    \end{tabular*}
+    \end{center}
+    \vspace{-32pt}
+    \begin{itemize}\renewcommand{\labelitemi}{}
+        \item\begin{itemize}
+        #5
+        \end{itemize}
+    \end{itemize}
+}
+
+%-----------------------------------------------------------
+
+
+% Bibliography
+\bibliography{publications}{}
+%\bibliographystyle{plain}
+
+\begin{document}
+
+\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
+\textbf{\Large Mr. Christopher James Wright} & \textbf{\today} \\
+Columbia University & cjwright4242@gmail.com \\
+\end{tabular*}
+\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Education \& Employment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ressubheadingitems{Columbia University}{New York, NY}
+    {Ph.D. Materials Science}
+    {2016 - 2019}{
+    \resitem{Adviser: Simon J. L. Billinge}
+%     \resitem{Dissertation: Essential Physics for Fuel Cycle Modeling \& Analysis}
+%     \resitem{Graduated with 3.74 GPA}
+}
+
+\ressubheadingitems{National Synchrotron Light Source-II, Brookhaven National Laboratory}{Upton, NY}
+    {Visiting Scholar}
+    {May 2015 - August 2015}{
+    \resitem{pyIID: The Python Infinite Improbability Drive, Monte Carlo Searches of X-ray Scattering Derived Structures}
+}
+
+\ressubheadingitems{The University of South Carolina, Columbia}{Columbia, SC}
+    {M.S Chemical Engineering}
+    {2014 - 2016}{
+    \resitem{Adviser: Xiao-Dong Zhou}
+    \resitem{Thesis: Solving Atomic Structures using Statistical Mechanical Searches on X-ray Scattering Derived Potential Energy Surfaces}
+    \resitem{Website: \url{https://github.com/CJ-Wright/Masters_Thesis/raw/master/thesis.pdf}}
+}
+
+\ressubheadingitems{National Synchrotron Light Source-II, Brookhaven National Laboratory}{Upton, NY}
+    {Software Engineer}
+    {May 2014 - August 2014} {
+    \resitem{pyXPD: prototype controls software for the x-ray powder diffraction beamline, 28-ID}
+}
+
+\ressubheadingitems{National Synchrotron Light Source, Brookhaven National Laboratory}{Upton, NY}{Science Undergraduate Laboratory Intern}
+    {June 2012 - August 2012}{
+    \resitem{Structural refinement of CdSe Nanoparticles}
+}
+
+\ressubheadingitems{University of South Carolina}{Columbia, SC}{Research Experience for Undergraduates Researcher}
+    {May 2011 - August 2011}{
+    \resitem{Electrochemical Reduction of \ce{CO2} via Copper Nanoparticles}
+}
+
+\ressubheadingitems{Brown University}{Providence, RI}
+    {Sc.B Chemical Physics}{2010 - 2014}{
+    \resitem{Graduated with Honors in Chemical Physics}
+    \resitem{Thesis: Catalyst Structure and Annealing Dynamics from the Pair Distribution Function: a basis for Rational Catalyst Design}
+    \resitem{Graduated with 3.49 GPA}
+}
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Awards, Grants \& Honours}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \vspace{-2pt}
+\begin{center}\begin{tabular*}{6.6in}{l@{\extracolsep{\fill}}r}
+    \multicolumn{2}{c}{Electrochemical Society Outstanding Student Chapter \cftdotfill{\cftdotsep} 2016}\\
+    \multicolumn{2}{c}{Presidential Fellow (University of South Carolina) \cftdotfill{\cftdotsep} 2014-2016}\\
+    \multicolumn{2}{c}{NSLS/CFN User Meeting Student Poster Scholarship\cftdotfill{\cftdotsep} 2014-2015}\\
+    \multicolumn{2}{c}{IGERT Fellow (University of South Carolina) \cftdotfill{\cftdotsep} 2014-2016}\\
+    \multicolumn{2}{c}{National Synchrotron Light Source X7B General User Beamtime \cftdotfill{\cftdotsep} 2013-2014}\\
+    \multicolumn{2}{c}{American Chemical Society Undergraduate Award in Inorganic Chemistry \cftdotfill{\cftdotsep} 2014}\\
+    \multicolumn{2}{c}{Leallyn B. Clapp Outstandint Thesis in Chemical Physics Prize (Dept. of Chemistry, Brown) \cftdotfill{\cftdotsep} 2014}\\
+    \multicolumn{2}{c}{Elected to Sigma Xi \cftdotfill{\cftdotsep} 2014}\\
+    \multicolumn{2}{c}{Undergraduate Teaching and Research Award \cftdotfill{\cftdotsep} 2013}\\
+    \multicolumn{2}{c}{Junior Prize in Chemical Physics (Dept. of Chemistry, Brown) \cftdotfill{\cftdotsep} 2013}\\
+    \multicolumn{2}{c}{CRC Prize (Dept. of Chemistry, Brown) \cftdotfill{\cftdotsep} 2012} \\
+    \multicolumn{2}{c}{NSF REU Second Prize - oral presentation (Dept. of ChemE, University of South Carolina) \cftdotfill{\cftdotsep} 2012} \\
+    \vphantom{E}
+\end{tabular*}
+\end{center}\vspace*{-16pt}
+
+%\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Featured Publications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{enumerate}
+% \item \fullcite{scopatz2015comphys}
+% 
+% \item \fullcite{scopatz2013entropy}
+% 
+% \item \fullcite{Scopatz2013a}
+% 
+% \item \fullcite{scopatz2013flash}
+% 
+% \item \fullcite{Scopatz2009}
+% 
+% \end{enumerate}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Research Experience}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ressubheadingitems{IGERT Fellow}{The University of South Carolina, Columbia}
+    {Atomic Pair Distribution Function Analysis}{August 2014 - June 2016} {
+        \resitem{Development of Monte Carlo simulations of atomic structures using x-ray scattering}
+        \resitem{Refinement of Solid Oxide Fuel Cell structural dynamics}
+    }
+
+\ressubheadingitems{Undergraduate Research Assistant}
+    {Brown University, Sun Group}
+    {Nanoparticle synthesis, Electrochemistry, and Atomic Structure}{2012 - 2014} {
+        \resitem{Studied the synthesis of gold nanoparticles for electrochemical
+        reduction of \ce{CO2} and their atomic structures}
+    }
+
+\ressubheadingitems{Summer Internship/Visiting Scientist, SULI}
+    {Brookhaven National Laboratory}{National Synchrotron Light Source}
+    {Summer 2012} {
+        \resitem{Refined CdSe atomic structure using}
+    }
+    
+\ressubheadingitems{Summer Internship/Visiting Scientist, REU}
+    {University of South Carolina}{Department of Chemical Engineering}
+    {Summer 2011} {
+        \resitem{Synthesized Copper Nanoparticles for the electrochemical
+        reduction of \ce{CO2} to Fuels and Feedstock Chemicals}
+    }
+
+%\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Major Software Projects}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ressubheadingitems{Scikit-Beam}{Developer}
+    {Data analysis tools for X-Ray, Neutron and Electron sciences}
+    {May 2014 - present} {
+%     \resitem{Discrete facilities with discrete material transactions}
+%     \resitem{Low barrier to entry, rapid payback to adoption}
+    \resitem{Website: \url{http://scikit-beam.github.io/scikit-beam/}}
+    }
+
+\ressubheadingitems{pyIID}{Lead Developer}{Monte Carlo Based Diffraction Simulation}
+    {May 2014 - present} {
+    \resitem{X-ray Scattering and Atomic Pair Distribution Function Simulation}
+    \resitem{Advanced GPU kernels for 10-100x speedup of scattering simulation}
+    \resitem{Refine atomic structures from scattering using Hamiltonian Monte Carlo}
+    \resitem{Website: \url{https://github.com/CJ-Wright/pyIID}}
+    }
+
+\ressubheadingitems{Sidewinder-Spec}{Lead Developer}{Sideloader from APS data to NSLS-II Database Stack}{Nov 2011 - present} {
+    \resitem{Load data from the APS to the NSLS-II stack for easy analysis and provenience}
+    \resitem{Website: \url{https://github.com/CJ-Wright/sidewinder-spec}}
+    }
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \resheading{Postdoctoral Publications}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{enumerate}
+% 
+% \item \fullcite{Scopatz2011d}
+% 
+% \end{enumerate}
+% 
+% 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Graduate Publications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+
+\item \fullcite{Dogdibegovic2016}
+
+\item \fullcite{Sharma2015}
+
+\end{enumerate}
+
+%\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Undergraduate Publications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+
+\item \fullcite{Zhu2013}
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Presentations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+
+\item \fullcite{Dogdibegovic2016}
+
+\item \fullcite{Wright2015}
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Posters}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+
+\item \fullcite{Dogdibegovic2016a}
+
+
+\end{enumerate}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \resheading{Teaching Experience}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \ressubheadingitems{Scientific Computing with Python and SciPy}
+%     {African Institute for Mathematical Sciences}{Lecturer}{September 2013 \& 2014} {
+%     \resitem{Instructed 50+ students in a full 30 hour course in the basics of 
+%              scientific computing in the context of the scientific Python stack.}
+%     \resitem{\href{http://software-carpentry.org/blog/2013/09/scientific-computing-at-aims.html}{Summary},  
+%              \href{https://bitbucket.org/scopatz/aims-scicomp.git}{Source Materials}
+%              }
+%     }
+% 
+%\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Outreach and Service}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ressubheadingitems{Enhanced Learning Experience}
+    {University of South Carolina}{Lecturer}{2016} {
+    \resitem{Presented a lecture and laboratory on electochemistry and catalysis}
+    }
+
+\ressubheadingitems{Electrochemical Society Student Chapter}
+    {University of South Carolina}{President}{2015-2016} {
+    \resitem{Organized seminars and outreach}
+    \resitem{Chosen as an Outstanding Chapter for 2016}
+    }
+
+\ressubheadingitems{Science Fair}
+    {Dutch Fork High School}{Judge}{2015} {
+    \resitem{Judged the chemistry section of the Dutch Fork High School science fair}
+    }
+
+\ressubheadingitems{Chemistry Department Undergraduate Group}
+    {Brown University}{Co-Chair}{2012-2014} {
+    \resitem{Organized seminars with distinguished scientists, with an emphasis on researchers from underrepresented groups}
+    \resitem{Produced annual chemistry demonstrations for the public}
+    \resitem{Held social events for undergraduate chemists and chemistry faculty aimed at promoting undergraduate research}
+    \resitem{Organized an panel of chemistry alumni to discuss their careers both inside and outside of academia}
+    }
+
+\ressubheadingitems{Brown Science Conference}
+    {Vartan Gregorian Elementary School}{Brown-Yale CCI Presenter}{2013} {
+    \resitem{Developed and presented a demonstration and lecture on electrochemical water splitting, and associated pH changes, titled: "The Colorful Chemistry of Electricity"}
+    }
+
+\ressubheadingitems{"Chemistry: Believe it or Not" public chemistry demonstration}
+    {Brown University}{Master of Ceremonies and Organizer}{2013} {
+    \resitem{Organized, MC'd, and presented a night of chemistry demonstrations}
+    }
+
+\ressubheadingitems{A Day on College Hill}
+    {Brown University}{Chemistry STEM Panelist}{2012-2013} {
+    \resitem{Discussed the Brown STEM program, especially the Chemical Physics program}
+    }
+
+\ressubheadingitems{"Night of Chemistry" public chemistry demonstration}
+    {Brown University}{Presenter}{2012} {
+    \resitem{Prepared and presented demonstrations of guncotton, liquid nitrogen, and others}
+    \resitem{Youtube video: https://www.youtube.com/watch?v=k8GxX7D2PI0}
+    }
+
+\ressubheadingitems{NSLS "Science Sunday" laboratory open house}
+    {Brookhaven National Laboratory}{Renewable Energy Presenter and Facility Tour Guide}{2012-2014} {
+    \resitem{Organized a renewable energy station with poster and solar powered cars and served as a tour guide of the NSLS and NSLS-II}
+    }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Memberships}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ressubheadingshort{American Chemical Society}{{\em 2009 - present}}{Member}
+
+\ressubheadingshort{Electrochemical Society}{{\em 2011 - 2016}}{Member}
+
+%\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\resheading{Skills}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+\item
+    Programming Languages
+    \begin{itemize}
+        \resitem{{\bf Expert:} Python}
+        \resitem{{\bf Intermediate:} Lua, BASH, XONSH}
+    \end{itemize}
+
+\item
+    Markup Languages
+    \begin{itemize}
+        \resitem{{\bf Expert:} \LaTeX, markdown}
+%         \resitem{{\bf Intermediate:} }
+    \end{itemize}
+
+\item
+    Specialized Software
+    \begin{itemize}
+        \resitem{{\bf Expert:} Linux, NumPy, 
+                 SciPy, MatPlotLib, ORIGEN v2.2, Mathematica, Numba, Fit2D, pyFAI}
+        \resitem{{\bf Intermediate:} MATLAB, MongoDB, TinyDB, SPEC}
+    \end{itemize}
+
+\item
+    Experiments
+    \begin{itemize}
+        \resitem{{\bf Expert:} X-ray Powder Diffraction, X-ray Total Scattering, 
+        Atomic Pair Distribution Function Analysis, In-situ/In-operando X-ray Scattering}
+        \resitem{{\bf Intermediate:} Electrochemistry, Nanoparticle Synthesis, Electron Microscopy}
+    \end{itemize}
+
+\end{itemize}
+
+\end{document}
